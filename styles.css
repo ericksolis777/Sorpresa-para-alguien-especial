@@ -1,0 +1,310 @@
+:root {
+    --asfalto: #14110f;
+    --hollin: #1f1a17;
+    --papel: #d8c8a4;
+    --tinta: #2b2118;
+    --sangre: #a3201c;
+    --sal: #f1eee6;
+    --whisky: #c98a2b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--asfalto);
+    color: var(--sal);
+    font-family: "Special Elite", "Courier New", monospace;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* ---------- Botón de música ---------- */
+.musica {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 0.75rem);
+    right: 0.75rem;
+    z-index: 10;
+    font: inherit;
+    font-size: 1.25rem;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(20, 17, 15, 0.85);
+    color: var(--sal);
+    border: 1px solid var(--whisky);
+    cursor: pointer;
+}
+
+.aviso {
+    display: none;
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 4rem);
+    right: 0.75rem;
+    z-index: 10;
+    max-width: min(280px, 80vw);
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    background: rgba(20, 17, 15, 0.95);
+    color: var(--sal);
+    border: 1px solid var(--sangre);
+}
+
+.musica:focus-visible {
+    outline: 3px solid var(--whisky);
+    outline-offset: 2px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 1.25rem;
+    text-align: center;
+    background: radial-gradient(circle at 50% 40%, #2a1512 0%, var(--asfalto) 70%);
+}
+
+
+.hero-text {
+    position: relative;
+    max-width: 640px;
+}
+
+.tag {
+    color: var(--whisky);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    overflow-wrap: anywhere;
+    font-family: "IM Fell English", Georgia, serif;
+    font-size: clamp(2.6rem, 9vw, 5.2rem);
+    line-height: 1.05;
+    font-weight: 400;
+    text-shadow: 0 0 24px rgba(163, 32, 28, 0.7);
+}
+
+.sub {
+    margin: 1.5rem auto 2rem;
+    max-width: 46ch;
+    color: #cfc8b8;
+}
+
+.btn {
+    min-height: 48px;
+    font: inherit;
+    background: var(--sangre);
+    color: var(--sal);
+    border: 2px solid var(--sal);
+    padding: 0.8rem 1.6rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+    background: #c42a25;
+    transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--whisky);
+    outline-offset: 3px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* ---------- Diario ---------- */
+.diario {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 1.25rem;
+    display: grid;
+    gap: 2.5rem;
+}
+
+.oculto {
+    display: none;
+}
+
+.pagina {
+    background: var(--papel);
+    color: var(--tinta);
+    padding: 2.5rem 2rem;
+    border-left: 10px solid #5b3a1e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    background-image: repeating-linear-gradient(transparent 0 31px, rgba(43, 33, 24, 0.12) 31px 32px);
+}
+
+.pagina:nth-child(odd) {
+    transform: rotate(-0.6deg);
+}
+
+.pagina:nth-child(even) {
+    transform: rotate(0.5deg);
+}
+
+.pagina h2 {
+    font-family: "IM Fell English", Georgia, serif;
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--sangre);
+    margin-bottom: 0.5rem;
+}
+
+.pagina p {
+    margin-bottom: 1rem;
+    max-width: 60ch;
+}
+
+.fecha {
+    font-style: italic;
+    opacity: 0.75;
+}
+
+.nota {
+    color: var(--sangre);
+    transform: rotate(-1.5deg);
+}
+
+.reglas,
+.razones {
+    padding-left: 1.4rem;
+}
+
+.reglas li,
+.razones li {
+    margin-bottom: 0.8rem;
+}
+
+.final .btn {
+    margin-top: 0.5rem;
+}
+
+.firma {
+    margin-top: 1.2rem;
+    color: var(--sangre);
+    min-height: 3.4rem;
+}
+
+/* ---------- Emblemas y prueba anti-posesión ---------- */
+.fondo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(110vw, 720px);
+    height: auto;
+    transform: translate(-50%, -50%);
+    color: var(--sangre);
+    opacity: 0.3;
+    pointer-events: none;
+    animation: latido 6s ease-in-out infinite;
+}
+
+.ap-grande {
+    display: block;
+    width: 150px;
+    margin: 1rem auto 1.5rem;
+    color: var(--tinta);
+}
+
+.ap-grande.escaneo {
+    animation: temblor 0.12s linear infinite;
+    color: var(--whisky);
+}
+
+.ap-grande.fallo {
+    color: var(--sangre);
+    filter: drop-shadow(0 0 8px rgba(163, 32, 28, 0.8));
+    animation: palpito 1.2s ease-in-out infinite;
+}
+
+@keyframes temblor {
+
+    0%,
+    100% {
+        transform: translateX(-2px);
+    }
+
+    50% {
+        transform: translateX(2px);
+    }
+}
+
+@keyframes palpito {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* ---------- Efecto sal ---------- */
+body.sal .hero {
+    box-shadow: inset 0 -6px 0 0 var(--sal);
+}
+
+body.sal .pagina.final {
+    box-shadow: 0 0 0 4px var(--sal), 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem 3rem;
+    color: #8c8478;
+}
+
+@keyframes latido {
+
+    0%,
+    100% {
+        opacity: 0.28;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .fondo,
+    .ap-grande.escaneo,
+    .ap-grande.fallo {
+        animation: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .btn {
+        transition: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .pagina {
+        padding: 2rem 1.25rem;
+    }
+}
